@@ -15,7 +15,7 @@ export function Logo({ onDark = false, compact = false }: Props) {
         alt={`${business.businessName} logo`}
         width={311}
         height={100}
-        className={compact ? 'h-9 w-auto md:h-10' : 'h-10 w-auto md:h-12'}
+        className={compact ? 'h-11 w-auto md:h-12' : 'h-12 w-auto md:h-16'}
         style={onDark ? { filter: 'invert(1) brightness(1.6)' } : undefined}
       />
     </a>
