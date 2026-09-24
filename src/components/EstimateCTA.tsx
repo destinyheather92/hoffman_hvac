@@ -6,7 +6,6 @@ import { Reveal } from './Reveal'
 export function EstimateCTA() {
   return (
     <section aria-labelledby="final-cta-title" className="relative overflow-hidden bg-navy-950 py-28 text-white md:py-40">
-      <div className="bg-grid-dark absolute inset-0" aria-hidden="true" />
       <span
         className="pointer-events-none absolute -bottom-10 right-0 select-none font-display text-[22rem] font-extrabold leading-none text-white/[0.03] md:text-[34rem]"
         aria-hidden="true"

@@ -17,7 +17,6 @@ export function EmergencyCTA() {
         style={{ background: 'repeating-linear-gradient(-45deg, #f26a1b 0 14px, #1c2026 14px 28px)' }}
         aria-hidden="true"
       />
-      <div className="bg-grid-dark absolute inset-0 opacity-70" aria-hidden="true" />
       <div className="absolute -right-40 top-1/2 h-[46rem] w-[46rem] -translate-y-1/2 rounded-full border border-orange/20" aria-hidden="true" />
       <div className="absolute -right-24 top-1/2 h-[38rem] w-[38rem] -translate-y-1/2 rounded-full border border-orange/10" aria-hidden="true" />
 

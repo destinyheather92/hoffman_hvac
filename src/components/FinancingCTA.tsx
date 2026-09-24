@@ -14,7 +14,6 @@ export function FinancingCTA() {
         <div className="relative grid overflow-hidden bg-navy-800 text-white lg:grid-cols-12">
           {/* angled orange edge */}
           <div className="absolute inset-y-0 right-[41.6%] hidden w-1.5 origin-top skew-x-[-8deg] bg-orange lg:block" aria-hidden="true" />
-          <div className="bg-grid-dark pointer-events-none absolute inset-0" aria-hidden="true" />
 
           <Reveal className="relative p-8 sm:p-12 lg:col-span-7 lg:p-16">
             <p className="label flex items-center gap-3 text-orange">

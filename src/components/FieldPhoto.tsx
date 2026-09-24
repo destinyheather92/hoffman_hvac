@@ -61,8 +61,6 @@ export function FieldPhoto({
       role="img"
       aria-label={`Photo placeholder: ${label}. ${description}`}
     >
-      {/* blueprint-ish ground */}
-      <div className="bg-grid-dark absolute inset-0 opacity-90" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(23_53_86/0.9),transparent_65%)]" />
       {/* viewfinder frame */}
       <div className="fp-frame absolute inset-3 border border-dashed border-steel/60" />

@@ -5,10 +5,7 @@ import { ArrowIcon, PhoneIcon } from './Icons'
 
 export function Hero() {
   return (
-    <section id="top" className="bg-grid-dark relative overflow-hidden bg-navy-900 text-white" aria-labelledby="hero-title">
-      {/* temperature ruler down the far left edge */}
-      <div className="ruler-y absolute inset-y-0 left-0 hidden w-4 text-steel/40 xl:block" aria-hidden="true" />
-
+    <section id="top" className="relative overflow-hidden bg-navy-900 text-white" aria-labelledby="hero-title">
       <div className="wrap grid items-stretch gap-10 pb-28 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-6 lg:pb-32 lg:pt-20">
         {/* ---------- copy ---------- */}
         <div className="relative z-10 flex flex-col justify-center lg:col-span-7 lg:pr-6">

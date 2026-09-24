@@ -12,7 +12,6 @@ import { SectionHeading } from './SectionHeading'
 export function AboutSection() {
   return (
     <section id="about" aria-labelledby="about-title" className="relative overflow-hidden bg-navy-900 py-24 text-white md:py-32">
-      <div className="bg-grid-dark absolute inset-0" aria-hidden="true" />
       <div className="wrap relative grid gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5 lg:pt-16">
           <Reveal>

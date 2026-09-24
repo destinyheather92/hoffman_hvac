@@ -51,7 +51,7 @@ export function MobileNavigation({ open, onClose, id }: Props) {
       aria-modal="true"
       aria-label="Site menu"
       aria-hidden={!open}
-      className={`bg-grid-dark fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-navy-950 text-white transition-[opacity,visibility] duration-200 lg:hidden ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}
+      className={`fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-navy-950 text-white transition-[opacity,visibility] duration-200 lg:hidden ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}
     >
       <div className="wrap flex h-[4.5rem] shrink-0 items-center justify-between">
         <Logo onDark />

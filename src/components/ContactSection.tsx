@@ -35,7 +35,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="bg-grid-light relative bg-paper py-24 md:py-32">
+    <section id="contact" aria-labelledby="contact-title" className="relative bg-paper py-24 md:py-32">
       <div className="wrap grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <SectionHeading

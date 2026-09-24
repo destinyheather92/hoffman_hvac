@@ -67,14 +67,3 @@ export const FacebookIcon = (p: SVGProps<SVGSVGElement>) => (
     <path d="M13.500 22v-8h2.700l.5-3.300h-3.200V8.600c0-1 .4-1.700 1.800-1.700h1.500V4.100C16.100 4 15.200 4 14.200 4 11.900 4 10.300 5.400 10.300 8v2.700H7.600V14h2.700v8Z" />
   </svg>
 )
-
-/** Hoffman mark: an H built like a vent frame — two rails and an orange crossbar. */
-export function LogoMark({ size = 40, onDark = false }: { size?: number; onDark?: boolean }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true" focusable="false">
-      <rect width="40" height="40" fill={onDark ? '#173556' : '#0a1a2c'} />
-      <path d="M11 8v24M29 8v24" stroke="#fff" strokeWidth="5" />
-      <path d="M11 20h18" stroke="#f26a1b" strokeWidth="5" />
-    </svg>
-  )
-}

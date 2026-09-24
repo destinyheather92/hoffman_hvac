@@ -1,20 +1,23 @@
 import { business } from '../data/business'
-import { LogoMark } from './Icons'
 
-export function Logo({ onDark = false, compact = false }: { onDark?: boolean; compact?: boolean }) {
+interface Props {
+  /** Render the white-on-transparent version for use on navy/charcoal backgrounds. */
+  onDark?: boolean
+  /** Slightly smaller mark for the scrolled header state. */
+  compact?: boolean
+}
+
+export function Logo({ onDark = false, compact = false }: Props) {
   return (
-    <a href="#top" className="flex items-center gap-3 no-underline" aria-label={`${business.businessName} — home`}>
-      <LogoMark size={compact ? 36 : 44} onDark={onDark} />
-      <span className="flex flex-col leading-none">
-        <span
-          className={`font-display text-[1.7rem] font-extrabold uppercase tracking-[0.04em] ${onDark ? 'text-white' : 'text-navy-900'}`}
-        >
-          Hoffman
-        </span>
-        <span className={`label mt-1 !text-[0.62rem] !tracking-[0.3em] ${onDark ? 'text-steel-300' : 'text-steel'}`}>
-          HVAC <span className="text-orange">/</span> LLC
-        </span>
-      </span>
+    <a href="#top" className="flex items-center no-underline" aria-label={`${business.businessName} — home`}>
+      <img
+        src="/logo.png"
+        alt={`${business.businessName} logo`}
+        width={311}
+        height={100}
+        className={compact ? 'h-9 w-auto md:h-10' : 'h-10 w-auto md:h-12'}
+        style={onDark ? { filter: 'invert(1) brightness(1.6)' } : undefined}
+      />
     </a>
   )
 }

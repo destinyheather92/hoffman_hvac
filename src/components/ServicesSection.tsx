@@ -4,7 +4,7 @@ import { ServiceCard } from './ServiceCard'
 
 export function ServicesSection() {
   return (
-    <section id="services" aria-labelledby="services-title" className="bg-grid-light relative bg-paper py-24 md:py-32">
+    <section id="services" aria-labelledby="services-title" className="relative bg-paper py-24 md:py-32">
       <div className="wrap">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <SectionHeading
