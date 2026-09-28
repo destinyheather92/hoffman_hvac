@@ -25,7 +25,9 @@ const ratio: Record<NonNullable<PhotoSlot['orientation']>, string> = {
 export function FieldPhoto({
   src,
   srcSet,
+  webpSrcSet,
   sizes,
+  position,
   alt = '',
   label = 'Field Photo',
   description = 'Replace with a real Hoffman HVAC job photo',
@@ -40,16 +42,20 @@ export function FieldPhoto({
   if (src) {
     return (
       <figure className={`${box} m-0 bg-navy-900`}>
-        <img
-          src={src}
-          srcSet={srcSet}
-          sizes={sizes}
-          alt={alt}
-          loading={priority ? 'eager' : 'lazy'}
-          fetchPriority={priority ? 'high' : 'auto'}
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-        />
+        <picture>
+          {webpSrcSet && <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />}
+          <img
+            src={src}
+            srcSet={srcSet}
+            sizes={sizes}
+            alt={alt}
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
+            decoding="async"
+            style={position ? { objectPosition: position } : undefined}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+        </picture>
         {children}
       </figure>
     )

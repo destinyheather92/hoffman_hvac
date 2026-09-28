@@ -1,12 +1,46 @@
 import { ESTIMATE_HREF, business } from '../data/business'
 import { photos } from '../data/photos'
-import { FieldPhoto } from './FieldPhoto'
 import { ArrowIcon, PhoneIcon } from './Icons'
+
+const { hero } = photos
 
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-navy-900 text-white" aria-labelledby="hero-title">
-      <div className="wrap grid items-stretch gap-10 pb-28 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-6 lg:pb-32 lg:pt-20">
+      {/* ---------- photo ----------
+          The photo is a ~2:1 panorama of the whole equipment lineup, so it never goes in a tall frame.
+          < lg: full-bleed band above the copy, close to its native ratio.
+          lg+:  bottom-anchored backdrop behind the copy; the gauges and tanks stay clear on the right. */}
+      <figure className="relative m-0 aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] lg:absolute lg:inset-x-0 lg:bottom-0 lg:aspect-auto lg:h-[74%]">
+        <picture>
+          <source type="image/webp" srcSet={hero.webpSrcSet} sizes={hero.sizes} />
+          <img
+            src={hero.src}
+            srcSet={hero.srcSet}
+            sizes={hero.sizes}
+            alt={hero.alt}
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover object-[72%_50%] sm:object-[60%_50%] lg:object-[100%_50%]"
+          />
+        </picture>
+        <div className="hero-scrim absolute inset-0" aria-hidden="true" />
+
+        {/* technical labels — hidden on phones, where they'd cover the equipment (the plates below repeat them) */}
+        <div className="pointer-events-none absolute inset-x-0 top-5 hidden sm:block lg:top-[14%]">
+          <div className="wrap flex justify-between gap-3 lg:justify-end">
+            <div className="border-l-2 border-orange bg-navy-950/85 px-3 py-2 backdrop-blur-sm">
+              <p className="label !text-[0.62rem] text-steel-300">Service</p>
+              <p className="label text-white">HVAC</p>
+            </div>
+            <div className="border-r-2 border-orange bg-navy-950/85 px-3 py-2 text-right backdrop-blur-sm">
+              <p className="label !text-[0.62rem] text-steel-300">Availability</p>
+              <p className="label text-white">{business.emergencyAvailability}</p>
+            </div>
+          </div>
+        </div>
+      </figure>
+
+      <div className="wrap grid items-stretch gap-10 pb-28 pt-4 md:pt-6 lg:grid-cols-12 lg:gap-6 lg:pb-32 lg:pt-20">
         {/* ---------- copy ---------- */}
         <div className="relative z-10 flex flex-col justify-center lg:col-span-7 lg:pr-6">
           <p className="label flex items-center gap-3 text-orange">
@@ -53,25 +87,6 @@ export function Hero() {
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* ---------- photo ---------- */}
-        <div className="relative lg:col-span-5 lg:-mr-10 xl:-mr-16">
-          <div className="relative h-full min-h-[22rem] lg:pt-10">
-            <FieldPhoto {...photos.hero} index="01" priority className="h-full min-h-[24rem] lg:min-h-[34rem]">
-              {/* technical labels around the photo */}
-              <div className="pointer-events-none absolute left-5 top-5 z-10 border-l-2 border-orange bg-navy-950/85 px-3 py-2 backdrop-blur-sm">
-                <p className="label !text-[0.62rem] text-steel-300">Service</p>
-                <p className="label text-white">HVAC</p>
-              </div>
-              <div className="pointer-events-none absolute right-5 top-5 z-10 border-r-2 border-orange bg-navy-950/85 px-3 py-2 text-right backdrop-blur-sm">
-                <p className="label !text-[0.62rem] text-steel-300">Availability</p>
-                <p className="label text-white">{business.emergencyAvailability}</p>
-              </div>
-            </FieldPhoto>
-            {/* offset outline for depth */}
-            <div className="pointer-events-none absolute -bottom-3 -left-3 hidden h-2/3 w-2/3 border-2 border-orange/70 lg:block" aria-hidden="true" />
-          </div>
         </div>
       </div>
 

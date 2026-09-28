@@ -3,14 +3,24 @@ import { FieldPhoto } from './FieldPhoto'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
-/** Mixed-size portfolio grid. Column spans per slot — order matches photos.gallery in src/data/photos.ts. */
-const spans = [
-  'lg:col-span-8',
-  'lg:col-span-4',
-  'lg:col-span-7',
-  'lg:col-span-5',
-  'lg:col-span-4',
-  'lg:col-span-8',
+/**
+ * Mixed-size portfolio grid. Column spans + image `sizes` per slot — order matches photos.gallery in
+ * src/data/photos.ts. Landscape photos sit in the wide spans, portraits in the narrow ones. On the 2-col
+ * tablet grid, slots 3 and 8 run full width; landscapes paired with a portrait get stretched taller (84vw).
+ */
+const wide = '(min-width: 1024px) min(66vw, 850px), (min-width: 768px) 84vw, 100vw'
+const narrow4 = '(min-width: 1024px) min(33vw, 420px), (min-width: 768px) 50vw, 100vw'
+const narrow5 = '(min-width: 1024px) min(42vw, 530px), (min-width: 768px) 50vw, 100vw'
+const full7 = '(min-width: 1024px) min(58vw, 740px), 100vw'
+const tiles = [
+  { span: 'lg:col-span-8', sizes: wide },
+  { span: 'lg:col-span-4', sizes: narrow4 },
+  { span: 'md:col-span-2 lg:col-span-7', sizes: full7 },
+  { span: 'lg:col-span-5', sizes: narrow5 },
+  { span: 'lg:col-span-4', sizes: narrow4 },
+  { span: 'lg:col-span-8', sizes: wide },
+  { span: 'lg:col-span-5', sizes: narrow5 },
+  { span: 'md:col-span-2 lg:col-span-7', sizes: full7 },
 ]
 
 export function ProjectGallery() {
@@ -38,15 +48,13 @@ export function ProjectGallery() {
 
         <ul className="m-0 mt-14 grid list-none grid-cols-1 gap-4 p-0 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
           {photos.gallery.map((slot, i) => (
-            <li
-              key={slot.label}
-              className={`${spans[i]} ${i === 2 ? 'md:col-span-2' : ''}`}
-            >
+            <li key={slot.label} className={tiles[i].span}>
               <Reveal delay={(i % 3) * 80} className="h-full">
                 <FieldPhoto
                   {...slot}
+                  sizes={tiles[i].sizes}
                   index={String(i + 2).padStart(2, '0')}
-                  className="h-full w-full lg:!aspect-auto lg:min-h-[22rem]"
+                  className="h-full w-full lg:!aspect-auto lg:min-h-[26rem]"
                 >
                   {slot.src && (
                     <p className="label absolute bottom-0 left-0 bg-navy-950/90 px-3 py-2 text-white">

@@ -19,12 +19,18 @@ npm run build    # outputs /dist — upload to any static host (Netlify, Cloudfl
 | Colors / fonts / buttons | `src/index.css` (`@theme`) |
 | Meta tags | `index.html` (JSON-LD is generated from the data files in `vite.config.ts`) |
 
-## Replacing a photo placeholder
+## Photos
 
-1. Put the image in `public/photos/` (e.g. `hero-condenser.jpg`, ~1600px wide).
-2. In `src/data/photos.ts`, set that slot's `src: '/photos/hero-condenser.jpg'` and write real `alt` text.
+Every photo slot (`hero`, `gallery[0..7]`, `team`, `emergency`) is filled with real job photos, configured in
+`src/data/photos.ts`.
 
-The placeholder disappears automatically. Slots: `hero`, `gallery[0..5]`, `team`, `emergency`.
+- Originals (straight off the phone, 2–12 MB each) are in `public/photos/`. The site never loads them.
+- The site loads resized copies from `public/photos/web/<slug>-<width>.webp` + `.jpg`. They're rotated upright,
+  converted to sRGB and have all metadata (including GPS) removed. Landscape copies come in 480/800/1200/1600 px,
+  portrait copies in 480/800/1200 px, and the hero in 800/1280/1600/2048/2400 px.
+- To swap a photo, export the new copies the same way, point the slot at them with `web('<slug>', …)`, write real
+  `alt` text, and set `position` (CSS `object-position`) if the crop cuts off the subject.
+- A slot without a `src` falls back to the designed placeholder.
 
 ## Contact form
 
@@ -40,4 +46,5 @@ To connect a provider (Formspree, Netlify Forms, etc.), replace `handleSubmit` i
 - Answers to the unanswered FAQs listed in `src/data/faqs.ts`
 - Owner name/story for About; license & insurance details if they want them shown
 - Financing partner / application link, if any
-- Real field photos
+- Photos not yet on the site: a service vehicle, a commercial/rooftop job, a before/after swap, and an
+  owner/team portrait

@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig, type Plugin } from 'vite'
 import { business } from './src/data/business.ts'
 import { faqs } from './src/data/faqs.ts'
+import { photos } from './src/data/photos.ts'
 
 /**
  * Builds the JSON-LD from the same data files the UI uses, so schema can never drift from the page.
@@ -74,7 +75,11 @@ function schemaPlugin(): Plugin {
       const ogImage = b.ogImage
         ? `<meta property="og:image" content="${b.ogImage}" />\n    <meta name="twitter:image" content="${b.ogImage}" />`
         : '<!-- TODO(client): add og:image once a branded share image exists -->'
+      // The hero photo is the LCP element but only appears once React renders — start the download from the HTML.
+      // Same srcset/sizes as the <source> in Hero.tsx, so the browser reuses this response.
+      const preload = `<link rel="preload" as="image" type="image/webp" imagesrcset="${photos.hero.webpSrcSet}" imagesizes="${photos.hero.sizes}" fetchpriority="high" />`
       return html
+        .replace('<!--PRELOAD-->', preload)
         .replace('<!--SCHEMA-->', `${tag(localBusiness)}\n    ${tag(faqPage)}`)
         .replace('<!--CANONICAL-->', canonical)
         .replace('<!--OGIMAGE-->', ogImage)
