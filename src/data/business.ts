@@ -27,7 +27,7 @@ export const business = {
     city: 'West Columbia',
     state: 'SC',
     stateName: 'South Carolina',
-    zip: '29069',
+    zip: '29169',
   },
 
   /** The current site's service pages say "Columbia and surrounding areas". */
