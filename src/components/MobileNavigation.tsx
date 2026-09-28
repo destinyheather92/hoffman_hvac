@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { ESTIMATE_HREF, business, nav } from '../data/business'
-import { ArrowIcon, CloseIcon, PhoneIcon } from './Icons'
+import { ClientHubLink } from './ClientHubLink'
+import { ArrowIcon, CloseIcon, ExternalIcon, PhoneIcon, UserIcon } from './Icons'
 import { Logo } from './Logo'
 
 interface Props {
@@ -65,6 +66,21 @@ export function MobileNavigation({ open, onClose, id }: Props) {
         </button>
       </div>
 
+      {/* existing customers — first thing in the menu so it's never below the fold on short phones */}
+      <div className="wrap mt-2">
+        <ClientHubLink
+          onClick={onClose}
+          className="flex min-h-16 items-center gap-4 border border-white/20 bg-navy-800 px-5 py-3 text-white no-underline transition-colors hover:border-orange"
+        >
+          <UserIcon width={26} height={26} className="shrink-0 text-orange" />
+          <span className="flex-1">
+            <span className="label block !text-[0.62rem] text-steel-300">Existing customers</span>
+            <span className="mt-1 block font-display text-[1.7rem] font-bold uppercase leading-none tracking-wide">Client Login</span>
+          </span>
+          <ExternalIcon className="shrink-0 text-steel-300" />
+        </ClientHubLink>
+      </div>
+
       <nav aria-label="Mobile" className="wrap mt-4 flex-1">
         <ul className="m-0 list-none p-0">
           {nav.map((item, i) => (
@@ -72,7 +88,7 @@ export function MobileNavigation({ open, onClose, id }: Props) {
               <a
                 href={item.href}
                 onClick={onClose}
-                className="group flex items-baseline justify-between py-4 font-display text-[2.6rem] font-bold uppercase leading-none no-underline"
+                className="group flex items-baseline justify-between py-4 font-display text-[2.6rem] font-bold uppercase leading-none no-underline [@media(max-height:720px)]:py-3"
               >
                 <span>
                   <span className="mr-4 font-mono text-xs font-medium tracking-widest text-orange">

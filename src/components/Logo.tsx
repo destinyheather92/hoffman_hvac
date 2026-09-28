@@ -9,13 +9,13 @@ interface Props {
 
 export function Logo({ onDark = false, compact = false }: Props) {
   return (
-    <a href="#top" className="flex items-center no-underline" aria-label={`${business.businessName} — home`}>
+    <a href="#top" className="flex min-w-0 items-center no-underline" aria-label={`${business.businessName} — home`}>
       <img
         src="/logo.png"
         alt={`${business.businessName} logo`}
         width={311}
         height={100}
-        className={compact ? 'h-11 w-auto md:h-12' : 'h-12 w-auto md:h-16'}
+        className={`w-auto object-contain object-left ${compact ? 'h-11 md:h-12' : 'h-12 md:h-16'}`}
         style={onDark ? { filter: 'invert(1) brightness(1.6)' } : undefined}
       />
     </a>

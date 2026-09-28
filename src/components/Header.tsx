@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ESTIMATE_HREF, business, nav } from '../data/business'
-import { ArrowIcon, MenuIcon, PhoneIcon } from './Icons'
+import { ClientHubLink } from './ClientHubLink'
+import { ArrowIcon, MenuIcon, PhoneIcon, UserIcon } from './Icons'
 import { Logo } from './Logo'
 import { MobileNavigation } from './MobileNavigation'
 import { UtilityBar } from './UtilityBar'
@@ -37,12 +38,12 @@ export function Header() {
           <Logo compact={scrolled} />
 
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="m-0 flex list-none items-center gap-9 p-0">
+            <ul className="m-0 flex list-none items-center gap-5 p-0 xl:gap-8 hd:gap-9">
               {nav.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="link-line font-display text-[1.05rem] font-semibold uppercase tracking-[0.1em] text-navy-900 hover:text-ember"
+                    className="link-line font-display text-[0.98rem] font-semibold uppercase tracking-[0.08em] text-navy-900 hover:text-ember xl:text-[1.05rem] xl:tracking-[0.1em]"
                   >
                     {item.label}
                   </a>
@@ -51,17 +52,29 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 md:gap-5">
+          <div className="flex shrink-0 items-center gap-2 md:gap-4">
+            {/* desktop has no room for the number next to Client Login until `hd`; the utility bar above carries it */}
             <a
               href={business.phoneHref}
-              className="hidden items-center gap-2 font-display text-[1.35rem] font-bold tracking-wide text-navy-900 no-underline hover:text-ember md:flex"
+              className="hidden items-center gap-2 font-display text-[1.35rem] font-bold tracking-wide text-navy-900 no-underline hover:text-ember md:flex lg:hidden hd:flex"
               aria-label={`Call ${business.phone}`}
             >
               <PhoneIcon className="text-ember" /> {business.phone}
             </a>
+            {/* existing customers — outlined navy so it never competes with the orange estimate CTA */}
+            <ClientHubLink className="btn btn-ghost-light !hidden !min-h-12 !gap-2 !px-4 !text-base md:!inline-flex">
+              <UserIcon width={18} height={18} /> Client Login
+            </ClientHubLink>
             <a href={ESTIMATE_HREF} className="btn btn-primary !hidden !min-h-12 !px-5 !text-base lg:!inline-flex">
               Get an Estimate <ArrowIcon width={16} height={16} />
             </a>
+            {/* account glyph button for small screens */}
+            <ClientHubLink
+              aria-label="Client Login (opens our secure Jobber Client Hub in a new tab)"
+              className="grid h-12 w-12 place-items-center border-2 border-navy-900 text-navy-900 md:hidden"
+            >
+              <UserIcon width={22} height={22} />
+            </ClientHubLink>
             {/* phone glyph button for small screens */}
             <a
               href={business.phoneHref}

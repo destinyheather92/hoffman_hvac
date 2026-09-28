@@ -1,6 +1,7 @@
 import { business, nav } from '../data/business'
 import { serviceGroups } from '../data/services'
-import { FacebookIcon } from './Icons'
+import { ClientHubLink } from './ClientHubLink'
+import { ExternalIcon, FacebookIcon, UserIcon } from './Icons'
 import { Logo } from './Logo'
 
 export function Footer() {
@@ -37,6 +38,12 @@ export function Footer() {
                 <a href={n.href} className="link-line inline-block py-1.5 text-white">{n.label}</a>
               </li>
             ))}
+            <li className="pt-2">
+              <ClientHubLink className="link-line inline-flex items-center gap-2 whitespace-nowrap py-1.5 font-semibold text-white">
+                <UserIcon width={16} height={16} className="text-orange" /> Client Login
+                <ExternalIcon width={14} height={14} className="text-steel-300" />
+              </ClientHubLink>
+            </li>
           </ul>
         </nav>
 

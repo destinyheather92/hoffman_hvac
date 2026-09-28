@@ -13,6 +13,7 @@ npm run build    # outputs /dist — upload to any static host (Netlify, Cloudfl
 | Change this | Edit this |
 | --- | --- |
 | Phone, email, address, hours, service area, Facebook | `src/data/business.ts` |
+| Client Login destination (Jobber Client Hub URL) — used by every Client Login link | `JOBBER_CLIENT_HUB_URL` in `src/data/business.ts` |
 | Services | `src/data/services.ts` |
 | FAQs (also feeds FAQ schema) | `src/data/faqs.ts` |
 | Photos | `src/data/photos.ts` |
@@ -41,7 +42,7 @@ To connect a provider (Formspree, Netlify Forms, etc.), replace `handleSubmit` i
 ## Open items for the client (search the code for `TODO(client)`)
 
 - Production domain (canonical, og:url, schema url) and a 1200×630 share image
-- Confirm business hours and street address (copied from the old site)
+- Confirm business hours (copied from the old site)
 - Confirm the full service area (old site says only "Columbia and surrounding areas")
 - Answers to the unanswered FAQs listed in `src/data/faqs.ts`
 - Owner name/story for About; license & insurance details if they want them shown

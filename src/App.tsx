@@ -1,5 +1,6 @@
 import { AboutSection } from './components/AboutSection'
 import { ContactSection } from './components/ContactSection'
+import { CustomerAccess } from './components/CustomerAccess'
 import { EmergencyCTA } from './components/EmergencyCTA'
 import { EstimateCTA } from './components/EstimateCTA'
 import { FAQAccordion } from './components/FAQAccordion'
@@ -29,6 +30,7 @@ export default function App() {
         <FAQAccordion />
         <EstimateCTA />
         <ContactSection />
+        <CustomerAccess />
       </main>
       <Footer />
       <MobileActionBar />

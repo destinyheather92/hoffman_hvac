@@ -44,6 +44,26 @@ export const ClockIcon = (p: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
+export const UserIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" />
+  </svg>
+)
+
+/** Leaves the site (external link). */
+export const ExternalIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <path d="M7 17 17 7M9 7h8v8" />
+  </svg>
+)
+
+export const LockIcon = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <path d="M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4" />
+  </svg>
+)
+
 export const MenuIcon = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base} strokeWidth={2.5} {...p}>
     <path d="M3 6h18M3 12h18M3 18h18" />

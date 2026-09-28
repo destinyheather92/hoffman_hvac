@@ -21,12 +21,13 @@ export const business = {
   email: 'hoffmanhvac431@gmail.com',
   emailHref: 'mailto:hoffmanhvac431@gmail.com',
 
+  /** Provided by the client 2026-09-28 (replaces the old site's address). */
   address: {
-    street: '2231 Sharpes Hill Road',
-    city: 'Gaston',
+    street: '2421 Robin Crest',
+    city: 'West Columbia',
     state: 'SC',
     stateName: 'South Carolina',
-    zip: '29053',
+    zip: '29069',
   },
 
   /** The current site's service pages say "Columbia and surrounding areas". */
@@ -38,7 +39,8 @@ export const business = {
   freeEstimates: 'Free in-home estimates',
   clients: 'Residential + Commercial',
 
-  facebook: 'https://www.facebook.com/Hoffman-HVAC-LLC-110293178391321/',
+  /** Provided by the client 2026-09-28. */
+  facebook: 'https://www.facebook.com/profile.php?id=100090534527688',
 
   // TODO(client): confirm the production domain (used for canonical, og:url, schema url).
   siteUrl: '' as string,
@@ -67,3 +69,13 @@ export const nav = [
 ] as const
 
 export const ESTIMATE_HREF = '#contact'
+
+/**
+ * Jobber Client Hub — where existing customers log in to their account. Every "Client Login" link on the site
+ * points here (via ClientHubLink); change it in this one place.
+ * This is the public login link the old site's "Client Login" button used — not a credential. The site only
+ * links out: it never collects, stores or forwards customer logins or account data, and holds no Jobber API keys.
+ * TODO(client): confirm this is still the Client Hub login link shown in the company's Jobber account.
+ */
+export const JOBBER_CLIENT_HUB_URL =
+  'https://clienthub.getjobber.com/client_hubs/1b66c823-1625-436f-a37d-da64643ddeaa/login/new?source=share_login'
